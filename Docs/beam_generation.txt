@@ -1,0 +1,15 @@
+cube 10 * 10 * 10
+
+beam 10.5 * 1 * 1
+
+beam pos = -5 / 5
+
+=> 10/2 + 1/2
+
+
+
+cube: S * S * S
+beam: S+2ε * w * w
+beamPos: ±(S-w/2 + ε)
+
+

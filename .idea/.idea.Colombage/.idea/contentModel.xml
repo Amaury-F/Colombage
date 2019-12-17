@@ -7,9 +7,11 @@
       <e p="Assets" t="Include">
         <e p="Editor" t="Include">
           <e p="BeamGeneratorEditor.cs" t="Include" />
+          <e p="StoryGeneratorEditor.cs" t="Include" />
         </e>
         <e p="Scripts" t="Include">
           <e p="BeamGenerator.cs" t="Include" />
+          <e p="StorySpawner.cs" t="Include" />
         </e>
       </e>
       <e p="Colombage.sln" t="IncludeFlat" />

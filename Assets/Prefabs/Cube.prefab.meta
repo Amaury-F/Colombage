@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: 246bd43c221c3ce7c8deb53c204300c2
+=======
+guid: 558ec6824507859448dc7de98ff012b2
+>>>>>>> develop-shape
 PrefabImporter:
   externalObjects: {}
   userData: 

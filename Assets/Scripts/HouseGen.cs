@@ -53,7 +53,7 @@ public class HouseGen : MonoBehaviour
 
         clone = SpawnObject(Objects);
         height += clone.transform.localScale.y;
-        clone.transform.position += new Vector3(0, height / 2, 0);
+        clone.transform.parent.position += new Vector3(0, height / 2, 0);
         clone.name = "Ground";
         spawnDoor(clone);
         //spawnWindow(clone);
@@ -86,9 +86,17 @@ public class HouseGen : MonoBehaviour
         {
             clone = Instantiate(prev, transform.position, transform.rotation);
         }
-            clone.transform.parent = transform;
-            RandomScaleObject(clone);
-            clone.GetComponent<MeshRenderer>().material = material;
+
+        GameObject storey = new GameObject();
+        storey.transform.SetParent(transform);
+        
+        clone.transform.SetParent(storey.transform);
+        RandomScaleObject(clone);
+        clone.GetComponent<MeshRenderer>().material = material;
+
+        BeamGenerator beamGen = clone.GetComponent<BeamGenerator>();
+        beamGen.seed = Random.Range(0, 100000);
+        beamGen.Generate();
 
         return clone;
     }
@@ -120,7 +128,7 @@ public class HouseGen : MonoBehaviour
     void PositionShift(GameObject clone, float height)
     {
         float step = (Random.Range(0f, shift) * NegativePositive());
-        clone.transform.position += new Vector3(0, height, step);
+        clone.transform.parent.position += new Vector3(0, height, step);
     }
 
     void ComparePosition(GameObject clone, GameObject prev)
@@ -135,7 +143,10 @@ public class HouseGen : MonoBehaviour
         distancePrev = Mathf.Abs(prevPosition.x - prevScale.x);
         distanceClone = Mathf.Abs(clonePosition.x - cloneScale.x);
 
-        clone.transform.position = new Vector3(clone.transform.position.x + (distanceClone - distancePrev), clone.transform.position.y, clone.transform.position.z);
+        var parent = clone.transform.parent;
+        var position = parent.position;
+        position = new Vector3(position.x + (distanceClone - distancePrev), position.y, position.z);
+        parent.position = position;
     }
 
     bool RandomBool()

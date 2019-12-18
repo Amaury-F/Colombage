@@ -7,12 +7,17 @@
       <e p="Assets" t="Include">
         <e p="Editor" t="Include">
           <e p="BeamGeneratorEditor.cs" t="Include" />
+          <e p="HouseGenEditor.cs" t="Include" />
           <e p="RoofGeneratorEditor.cs" t="Include" />
           <e p="RoofSpawnerEditor.cs" t="Include" />
           <e p="StoryGeneratorEditor.cs" t="Include" />
         </e>
         <e p="Scripts" t="Include">
           <e p="BeamGenerator.cs" t="Include" />
+          <e p="Cube.cs" t="Include" />
+          <e p="Generator.cs" t="Include" />
+          <e p="HouseGen.cs" t="Include" />
+          <e p="HouseGenerator.cs" t="Include" />
           <e p="RoofGenerator.cs" t="Include" />
           <e p="RoofSpawner.cs" t="Include" />
           <e p="StorySpawner.cs" t="Include" />

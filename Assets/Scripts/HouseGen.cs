@@ -35,9 +35,16 @@ public class HouseGen : MonoBehaviour
 
     public void DestroyHouse()
     {
-        foreach (var storey in storeys)
+        //foreach (var storey in storeys)
+        //{
+        //    DestroyImmediate(storey);
+        //}
+        while (this.transform.childCount > 0)
         {
-            DestroyImmediate(storey);
+            foreach (Transform child in this.transform)
+            {
+                DestroyImmediate(child.gameObject);
+            }
         }
     }
 
@@ -56,7 +63,7 @@ public class HouseGen : MonoBehaviour
         clone.transform.parent.position += new Vector3(0, height / 2, 0);
         clone.name = "Ground";
         spawnDoor(clone);
-        //spawnWindow(clone);
+        spawnWindow(clone);
         storeys.Add(clone);
 
         for (int i = 1; i < Storeys; i++)
@@ -64,6 +71,7 @@ public class HouseGen : MonoBehaviour
             clone = SpawnObject(storeys[storeys.Count - 1]);
             height += clone.transform.localScale.y / 2;
             PositionShift(clone, height);
+            spawnWindow(clone);
             ComparePosition(clone, storeys[storeys.Count - 1]);
             height += clone.transform.localScale.y / 2;
             clone.name = "Storey " + i;
@@ -101,28 +109,11 @@ public class HouseGen : MonoBehaviour
         return clone;
     }
 
-    Vector3 RandomScale(float value)
-    {
-        return new Vector3(Random.Range(0, value), Random.Range(0, value), Random.Range(0, value));
-    }
-
     void RandomScaleObject(GameObject clone)
     {
         clone.transform.localScale = new Vector3(clone.transform.localScale.x + NegativePositive() * Random.Range(0f, scaleStep), 
                                                  clone.transform.localScale.y + NegativePositive() * Random.Range(0f, scaleStep), 
                                                  clone.transform.localScale.z + NegativePositive() * Random.Range(0f, scaleStep));
-    }
-
-    Vector3 RandomScaleAxis(GameObject clone, char axis)
-    {
-        if (axis == 'x')
-            return new Vector3(Random.Range(0, scaleStep), clone.transform.localScale.y, clone.transform.localScale.z);
-        else if (axis == 'y')
-            return new Vector3(clone.transform.localScale.x, Random.Range(0, scaleStep), clone.transform.localScale.z);
-        else if (axis == 'z')
-            return new Vector3(clone.transform.localScale.x, clone.transform.localScale.y, Random.Range(0, scaleStep));
-        else
-            return clone.transform.localScale;
     }
 
     void PositionShift(GameObject clone, float height)
@@ -149,11 +140,6 @@ public class HouseGen : MonoBehaviour
         parent.position = position;
     }
 
-    bool RandomBool()
-    {
-        return Random.Range(0f, 1f) > .5f;
-    }
-
     float NegativePositive()
     {
         return Random.Range(0f, 1f) > .5f ? 1 : -1;
@@ -166,7 +152,7 @@ public class HouseGen : MonoBehaviour
         Door.transform.parent = clone.transform;
 
         float distanceClone = Mathf.Abs(clone.transform.position.x - clone.transform.localScale.x);
-        Door.transform.position += new Vector3(distanceClone / 2, clone.transform.position.y / 4, (Random.Range(0f, .1f) * NegativePositive()));
+        Door.transform.position += new Vector3(distanceClone / 2, clone.transform.position.y / 8, (Random.Range(0f, .1f) * NegativePositive()));
         Door.transform.localScale = new Vector3(Door.transform.localScale.x / 7, Door.transform.localScale.y / 7, Door.transform.localScale.z / 7);
     }
 
@@ -175,14 +161,29 @@ public class HouseGen : MonoBehaviour
         float nb = Random.Range(0, 2);
         for (int i = 0; i <= nb; i++)
         {
-            GameObject Window = Instantiate(Windows[Random.Range(0, Windows.Length)], transform.position, transform.rotation);
+            GameObject Window = Instantiate(Windows[Random.Range(0, Windows.Length)], transform.position, Quaternion.Euler(0, 180, 0));
 
-            Window.transform.parent = clone.transform;
-            //Window.transform.SetParent(clone.transform.parent);
+            //Window.transform.parent = clone.transform;
+            Window.transform.SetParent(clone.transform.parent);
 
             float distanceClone = Mathf.Abs(clone.transform.position.x - clone.transform.localScale.x);
-            Window.transform.position += new Vector3(distanceClone / 2, clone.transform.position.y / 4, (Random.Range(0f, .1f) * NegativePositive()));
-            Window.transform.localScale = new Vector3(Window.transform.localScale.x / 7, Window.transform.localScale.y / 7, Window.transform.localScale.z / 7);
+            float distanceCloneZ = Mathf.Abs(clone.transform.position.z - clone.transform.localScale.z / 5);
+            Window.transform.localScale = new Vector3(Window.transform.localScale.x / 4, Window.transform.localScale.y / 4, Window.transform.localScale.z / 4);
+            Window.transform.position = new Vector3(distanceClone / 3.8f, clone.transform.position.y, (Random.Range(-distanceCloneZ, distanceCloneZ)));
+        }
+
+        nb = Random.Range(0, 2);
+        for (int i = 0; i <= nb; i++)
+        {
+            GameObject Window = Instantiate(Windows[Random.Range(0, Windows.Length)], transform.position, Quaternion.Euler(0, -90, 0));
+
+            //Window.transform.parent = clone.transform;
+            Window.transform.SetParent(clone.transform.parent);
+
+            float distanceClone = Mathf.Abs(clone.transform.position.x - clone.transform.localScale.x);
+            float distanceCloneZ = Mathf.Abs(clone.transform.position.z - clone.transform.localScale.z / 5);
+            Window.transform.localScale = new Vector3(Window.transform.localScale.x / 4, Window.transform.localScale.y / 4, Window.transform.localScale.z / 4);
+            Window.transform.position = new Vector3(0, clone.transform.position.y, (Random.Range(-distanceCloneZ, distanceCloneZ)));
         }
     }
 }

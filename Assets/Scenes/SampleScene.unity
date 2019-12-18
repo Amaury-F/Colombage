@@ -398,15 +398,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef6097c9dddb3ce41af3ba8121f77fb1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Objects: {fileID: 7717802257558453794, guid: 558ec6824507859448dc7de98ff012b2, type: 3}
+  Objects: {fileID: 7717802257558453794, guid: 246bd43c221c3ce7c8deb53c204300c2, type: 3}
   material: {fileID: 2100000, guid: 0eb2dfd0544d57e4db9efd45e4d785db, type: 2}
   Doors:
-  - {fileID: 100002, guid: d4ac3089910faab48960bebddaaeee03, type: 3}
   - {fileID: 100000, guid: 0a1a279edc36fb3459c95bb5a2a91e76, type: 3}
+  - {fileID: 100002, guid: d4ac3089910faab48960bebddaaeee03, type: 3}
   Windows:
   - {fileID: 989172843617892063, guid: 05c1226dd7a9f0b4ba9ca57126ff693f, type: 3}
   - {fileID: 352429931708589993, guid: cd29931a9b70d8b43ba44757956f70bd, type: 3}
-  minPieces: 1
+  minPieces: 2
   maxPieces: 5
   shift: 0.05
   scaleStep: 0.05

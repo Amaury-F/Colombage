@@ -6,6 +6,8 @@ public class HouseGen : MonoBehaviour
 {
     [Header("Objects")]
     public GameObject Objects;
+
+    public GameObject roof;
     public Material material;
 
     [Header("Prefabs")]
@@ -56,14 +58,14 @@ public class HouseGen : MonoBehaviour
         float height = .0f;
         GameObject clone;
 
-        Objects.transform.localScale = new Vector3(Objects.transform.localScale.x, 0.5f, Objects.transform.localScale.z);
+        //Objects.transform.localScale = new Vector3(Objects.transform.localScale.x, 0.5f, Objects.transform.localScale.z);
 
         clone = SpawnObject(Objects);
         height += clone.transform.localScale.y;
         clone.transform.parent.position += new Vector3(0, height / 2, 0);
         clone.name = "Ground";
         spawnDoor(clone);
-        spawnWindow(clone);
+        //spawnWindow(clone);
         storeys.Add(clone);
 
         for (int i = 1; i < Storeys; i++)
@@ -71,12 +73,29 @@ public class HouseGen : MonoBehaviour
             clone = SpawnObject(storeys[storeys.Count - 1]);
             height += clone.transform.localScale.y / 2;
             PositionShift(clone, height);
-            spawnWindow(clone);
+            //spawnWindow(clone);
             ComparePosition(clone, storeys[storeys.Count - 1]);
             height += clone.transform.localScale.y / 2;
             clone.name = "Storey " + i;
             storeys.Add(clone);
         }
+
+        clone = SpawnObject(roof);
+        PositionShift(clone, height);
+        
+        RoofGenerator g = clone.GetComponent<RoofGenerator>();
+        g.height = Random.Range(0.5f, 2f);
+        g.semiHeight = Random.Range(0.5f, g.height);
+
+        g.xSizeA = Random.Range(0.5f, 1.6f);
+        g.xSizeB = Random.Range(0.5f, g.xSizeA);
+                
+        g.zSizeA = Random.Range(0.5f, 1.6f);
+        g.zSizeB = Random.Range(0.5f, g.zSizeA);
+                
+        g.topSize = Random.Range(0f, g.zSizeB);
+                
+        g.GenerateRoof();
 
     }
 

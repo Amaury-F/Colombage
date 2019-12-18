@@ -8,6 +8,7 @@ using Random = UnityEngine.Random;
 public class BeamGenerator : MonoBehaviour {
 
     public GameObject beamPrefab;
+    public GameObject windowPrefab;
 
     [Range(0, 0.2f)]
     public float width = 0.06f;
@@ -23,6 +24,11 @@ public class BeamGenerator : MonoBehaviour {
     }
 
     public void Generate() {
+        if (transform.parent == null) {
+            Debug.LogError("Cube should be a child of an empty object.");
+            return;
+        }
+        
         if (seed < 0) {
             seed = Random.Range(-100000, -1);
         }
@@ -110,6 +116,18 @@ public class BeamGenerator : MonoBehaviour {
                 x += xFract;
             }
             
+            /*
+            //place windows
+            int nbrWindow = Random.Range(0, 3);
+            float yy = 0.5f + Random.Range(-0.1f, 0.1f);
+            float xx = 0f;
+            for (int i = 0; i < nbrWindow; ++i) {
+                xx += 1f / (i + 1f);
+                PlaceWindowOnFace(face, new Vector2(xx, yy), eps, "window");
+            }
+            */
+            
+            
         }
 
     }
@@ -172,6 +190,53 @@ public class BeamGenerator : MonoBehaviour {
         beam.transform.localScale = scale;
 
         beam.transform.SetParent(transform.parent);
+    }
+    
+    /*
+     * put a window of width on the face (V3.forward, V3.left ...),
+     * the face becomes a 2D plan with 0,0 at topleft and 1,1 at bottomright
+     */
+    private void PlaceWindowOnFace(Vector3 face, Vector2 a, float eps, string objName) {
+        Vector3 c0;
+        Vector3 c1;
+        float sh = - width / 2 + eps;
+        Vector3 scale = transform.localScale;
+
+        Vector3 aa = new Vector3();
+        if (face == Vector3.forward) {
+            c0 = new Vector3(0.5f, 0.5f, 0.5f + sh/scale.z);
+            c1 = new Vector3(-1, -1, 0);
+            aa = c0 + new Vector3(c1.x * a.x, c1.y * a.y, 0);
+            
+        } else if (face == Vector3.right) {
+            c0 = new Vector3(0.5f + sh/scale.x, 0.5f, -0.5f);
+            c1 = new Vector3(0, -1, 1);
+            aa = c0 + new Vector3(0, c1.y * a.y, c1.z * a.x);
+            
+        } else if (face == Vector3.back) {
+            c0 = new Vector3(-0.5f, 0.5f, -0.5f - sh/scale.z);
+            c1 = new Vector3(1, -1, 0);
+            aa = c0 + new Vector3(c1.x * a.x, c1.y * a.y, 0);
+            
+        } else if (face == Vector3.left) {
+            c0 = new Vector3(-0.5f - sh/scale.z, 0.5f, 0.5f);
+            c1 = new Vector3(0, -1, -1);
+            aa = c0 + new Vector3(0, c1.y * a.y, c1.z * a.x);
+        }
+        
+        Vector3 localScale = transform.localScale;
+        Vector3 aaa = mult(aa, localScale);
+
+        Quaternion rotation = Quaternion.LookRotation(face);
+        
+        GameObject window = Instantiate(windowPrefab, transform.position, rotation);
+        window.tag = "beam";
+        window.name = objName;
+
+        window.transform.position += aaa;
+
+        window.transform.SetParent(transform.parent);
+        
     }
 
 

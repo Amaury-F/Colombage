@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 7717802257558453794}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 0.5, z: 1}
+  m_LocalScale: {x: 1, y: 0.7, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -106,7 +106,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   beamPrefab: {fileID: 4053454376342003382, guid: f223b1a5c1d846714b0b67f9c874e95e,
     type: 3}
-  width: 0.06
-  shift: 17
+  width: 0.065
+  shift: 60
   seed: 12345
   autoUpdateBeams: 0

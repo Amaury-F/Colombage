@@ -14,10 +14,7 @@
         </e>
         <e p="Scripts" t="Include">
           <e p="BeamGenerator.cs" t="Include" />
-          <e p="Cube.cs" t="Include" />
-          <e p="Generator.cs" t="Include" />
           <e p="HouseGen.cs" t="Include" />
-          <e p="HouseGenerator.cs" t="Include" />
           <e p="RoofGenerator.cs" t="Include" />
           <e p="RoofSpawner.cs" t="Include" />
           <e p="StorySpawner.cs" t="Include" />

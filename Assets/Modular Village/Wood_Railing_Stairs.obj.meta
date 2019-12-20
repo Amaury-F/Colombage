@@ -27,6 +27,16 @@ ModelImporter:
     400020: //RootNode
     2100000: Wood_Dark
     2100002: Wood_Darker
+    2100004: object1Mat
+    2100006: object10Mat
+    2100008: object2Mat
+    2100010: object3Mat
+    2100012: object4Mat
+    2100014: object5Mat
+    2100016: object6Mat
+    2100018: object7Mat
+    2100020: object8Mat
+    2100022: object9Mat
     2300000: object1
     2300002: object10
     2300004: object2

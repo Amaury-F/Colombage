@@ -92,6 +92,47 @@ ModelImporter:
     2100004: Wood_Darker
     2100006: Wood_Light
     2100008: Iron_Grey
+    2100010: object1Mat
+    2100012: object10Mat
+    2100014: object11Mat
+    2100016: object12Mat
+    2100018: object13Mat
+    2100020: object14Mat
+    2100022: object15Mat
+    2100024: object16Mat
+    2100026: object17Mat
+    2100028: object18Mat
+    2100030: object19Mat
+    2100032: object2Mat
+    2100034: object20Mat
+    2100036: object21Mat
+    2100038: object22Mat
+    2100040: object23Mat
+    2100042: object24Mat
+    2100044: object25Mat
+    2100046: object26Mat
+    2100048: object27Mat
+    2100050: object28Mat
+    2100052: object29Mat
+    2100054: object3Mat
+    2100056: object30Mat
+    2100058: object31Mat
+    2100060: object32Mat
+    2100062: object33Mat
+    2100064: object34Mat
+    2100066: object35Mat
+    2100068: object36Mat
+    2100070: object37Mat
+    2100072: object38Mat
+    2100074: object39Mat
+    2100076: object4Mat
+    2100078: object40Mat
+    2100080: object41Mat
+    2100082: object5Mat
+    2100084: object6Mat
+    2100086: object7Mat
+    2100088: object8Mat
+    2100090: object9Mat
     2300000: object1
     2300002: object10
     2300004: object11

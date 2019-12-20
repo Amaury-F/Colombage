@@ -9,6 +9,7 @@ ModelImporter:
     400002: //RootNode
     2100000: Wood_Dark
     2100002: Wood_Medium
+    2100004: flume_endMat
     2300000: flume_end
     3300000: flume_end
     4300000: flume_end

@@ -1,0 +1,60 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &505447183474939337
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 505447183474939339}
+  - component: {fileID: 505447183474939341}
+  m_Layer: 0
+  m_Name: Generator
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &505447183474939339
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 505447183474939337}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -2.61, y: 0.11, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &505447183474939341
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 505447183474939337}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef6097c9dddb3ce41af3ba8121f77fb1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Objects: {fileID: 7717802257558453794, guid: 246bd43c221c3ce7c8deb53c204300c2, type: 3}
+  roofPrefab: {fileID: 7509622373431993670, guid: 3fd2abdfc4ee1a5679fad2da98f35bf0,
+    type: 3}
+  material: {fileID: 2100000, guid: 0eb2dfd0544d57e4db9efd45e4d785db, type: 2}
+  Doors:
+  - {fileID: 100000, guid: 0a1a279edc36fb3459c95bb5a2a91e76, type: 3}
+  - {fileID: 100002, guid: d4ac3089910faab48960bebddaaeee03, type: 3}
+  Windows:
+  - {fileID: 989172843617892063, guid: 05c1226dd7a9f0b4ba9ca57126ff693f, type: 3}
+  - {fileID: 352429931708589993, guid: cd29931a9b70d8b43ba44757956f70bd, type: 3}
+  minPieces: 2
+  maxPieces: 5
+  shift: 0.05
+  scaleStep: 0.05
+  scaleDecrease: 0.5

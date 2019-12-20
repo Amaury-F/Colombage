@@ -14,6 +14,9 @@ ModelImporter:
     2100000: Stucco
     2100002: Window
     2100004: Wood_Darker
+    2100006: object1Mat
+    2100008: object2Mat
+    2100010: object3Mat
     2300000: object1
     2300002: object2
     2300004: object3

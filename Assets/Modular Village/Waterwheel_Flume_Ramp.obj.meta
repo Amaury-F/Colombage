@@ -9,6 +9,7 @@ ModelImporter:
     400002: //RootNode
     2100000: Wood_Dark
     2100002: Wood_Medium
+    2100004: flume_rampMat
     2300000: flume_ramp
     3300000: flume_ramp
     4300000: flume_ramp

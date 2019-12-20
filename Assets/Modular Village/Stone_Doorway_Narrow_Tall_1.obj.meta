@@ -12,6 +12,8 @@ ModelImporter:
     2100000: Stone_Brit_Gray
     2100002: Stone_Brit_Gray_Light
     2100004: Wood_Darker
+    2100006: object1Mat
+    2100008: object2Mat
     2300000: object1
     2300002: object2
     3300000: object1

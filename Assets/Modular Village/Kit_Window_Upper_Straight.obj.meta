@@ -21,6 +21,11 @@ ModelImporter:
     2100006: Dark_Red_Roof
     2100008: Stucco
     2100010: Window
+    2100012: object1Mat
+    2100014: object2Mat
+    2100016: object3Mat
+    2100018: object4Mat
+    2100020: object5Mat
     2300000: object1
     2300002: object2
     2300004: object3

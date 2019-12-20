@@ -37,28 +37,27 @@ public class RoofGenerator : MonoBehaviour {
             gameObject.AddComponent<MeshRenderer>();
         }
 
-        Vector3 center = transform.position;
         
         Vector3[] vertices = new Vector3[10];
 
         float xs = xSizeA / 2;
         float zs = zSizeA / 2;
         
-        vertices[0] = center + new Vector3(-xs, 0, -zs);
-        vertices[1] = center + new Vector3(-xs, 0, +zs);
-        vertices[2] = center + new Vector3(+xs, 0, +zs);
-        vertices[3] = center + new Vector3(+xs, 0, -zs);
+        vertices[0] = new Vector3(-xs, 0, -zs);
+        vertices[1] = new Vector3(-xs, 0, +zs);
+        vertices[2] = new Vector3(+xs, 0, +zs);
+        vertices[3] = new Vector3(+xs, 0, -zs);
         
         xs = xSizeB / 2;
         zs = zSizeB / 2;
         
-        vertices[4] = center + new Vector3(-xs, semiHeight, -zs);
-        vertices[5] = center + new Vector3(-xs, semiHeight, +zs);
-        vertices[6] = center + new Vector3(+xs, semiHeight, +zs);
-        vertices[7] = center + new Vector3(+xs, semiHeight, -zs);
+        vertices[4] = new Vector3(-xs, semiHeight, -zs);
+        vertices[5] = new Vector3(-xs, semiHeight, +zs);
+        vertices[6] = new Vector3(+xs, semiHeight, +zs);
+        vertices[7] = new Vector3(+xs, semiHeight, -zs);
         
-        vertices[8] = center + new Vector3(0, height, -topSize/2);
-        vertices[9] = center + new Vector3(0, height, +topSize/2);
+        vertices[8] = new Vector3(0, height, -topSize/2);
+        vertices[9] = new Vector3(0, height, +topSize/2);
 
 
         int[] triangles = {

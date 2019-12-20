@@ -7,7 +7,7 @@ public class HouseGen : MonoBehaviour
     [Header("Objects")]
     public GameObject Objects;
 
-    public GameObject roof;
+    public GameObject roofPrefab;
     public Material material;
 
     [Header("Prefabs")]
@@ -80,20 +80,21 @@ public class HouseGen : MonoBehaviour
             storeys.Add(clone);
         }
 
-        clone = SpawnObject(roof);
-        PositionShift(clone, height);
+        GameObject roof = Instantiate(roofPrefab);
+        roof.transform.position = new Vector3(clone.transform.position.x, height, clone.transform.position.z);
+        roof.transform.SetParent(transform);
         
-        RoofGenerator g = clone.GetComponent<RoofGenerator>();
+        RoofGenerator g = roof.GetComponent<RoofGenerator>();
         g.height = Random.Range(0.5f, 2f);
-        g.semiHeight = Random.Range(0.5f, g.height);
+        g.semiHeight = Random.Range(0.5f, Random.Range(0.5f, g.height));
 
-        g.xSizeA = Random.Range(0.5f, 1.6f);
+        g.xSizeA = Random.Range(clone.transform.localScale.x + 0.05f, clone.transform.localScale.x + 0.3f);
         g.xSizeB = Random.Range(0.5f, g.xSizeA);
                 
-        g.zSizeA = Random.Range(0.5f, 1.6f);
-        g.zSizeB = Random.Range(0.5f, g.zSizeA);
+        g.zSizeA = Random.Range(clone.transform.localScale.z + 0.05f, clone.transform.localScale.z + 0.3f);
+        g.zSizeB = Random.Range(0.5f, Random.Range(0.5f, g.zSizeA));
                 
-        g.topSize = Random.Range(0f, g.zSizeB);
+        g.topSize = Random.Range(0f, Random.Range(0f, g.zSizeB));
                 
         g.GenerateRoof();
 
@@ -175,6 +176,7 @@ public class HouseGen : MonoBehaviour
         Door.transform.localScale = new Vector3(Door.transform.localScale.x / 7, Door.transform.localScale.y / 7, Door.transform.localScale.z / 7);
     }
 
+    /*
     void spawnWindow(GameObject clone)
     {
         float nb = Random.Range(0, 2);
@@ -204,5 +206,5 @@ public class HouseGen : MonoBehaviour
             Window.transform.localScale = new Vector3(Window.transform.localScale.x / 4, Window.transform.localScale.y / 4, Window.transform.localScale.z / 4);
             Window.transform.position = new Vector3(0, clone.transform.position.y, (Random.Range(-distanceCloneZ, distanceCloneZ)));
         }
-    }
+    }*/
 }
